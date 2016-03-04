@@ -8,6 +8,7 @@ puts "★★★★★★★★★★★★★★★★★★★★★★★★�
 puts "  ● WELCOME TO TIC TAC TOE ●"
 puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
 
+# Prompt the user for what kind of game they want to play, 0,1, or 2 player
 game = Game.new.game_type
 
 until game.over?
