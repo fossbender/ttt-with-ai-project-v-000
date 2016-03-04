@@ -78,13 +78,15 @@ class Game
     end
     # changes to player 2 after the first turn
     board.update(input, current_player)
+    puts
+    board.display
+    puts
   end
 
+  # plays through an entire game
   def play
-    # plays through an entire game
-    until over?
-      # asks for players input on a turn of the game
-      board.turn_count 
+    until over? 
+      board.turn_count #=> asks for players input on a turn of the game
       # checks if the game is over after every turn
       # plays the first turn of the game
       # plays the first few turns of the game
@@ -94,15 +96,67 @@ class Game
 
     # checks if the game is won after every turn
     if won?
-      # stops playing if someone has won
-      # congratulates the winner X
-      # congratulates the winner O
       puts "Congratulations #{winner}!"
-    # checks if the game is draw after every turn
-    # stops playing in a draw
-    # prints "Cats Game!" on a draw
-    elsif draw?
-      puts "Cats Game!" 
+    # checks if the game is draw after every turn  
+    elsif draw? 
+      puts "Cats Game!" # prints "Cats Game!" on a draw
     end
   end
+
+  # Greet the user with a message
+  def greeting
+    puts
+    puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+    puts "  ● WELCOME TO TIC TAC TOE ●"
+    puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+    puts
+  end
+
+  # Gives the player the option of selecting a game type
+  def game_type
+    puts
+    puts "❉ Game Types ❉"
+    puts "--------------------------------------------"
+    puts "● 1 One Player Game"
+    puts "● 2 Two Players Game"
+    puts "● 0 The computer will play against itself"
+    puts "--------------------------------------------"
+    puts
+    puts "Please select a Game type"
+    type = gets.strip
+
+    until [0,1,2].include? type.to_i
+      puts "Please select a valid Game type"
+      type = gets.strip
+    end
+
+    case type.to_i
+    when 2
+      game = Game.new(player_1 = Human.new("X"), player_2 = Human.new("O"), board = Board.new)
+    when 1
+      game = Game.new(player_1 = Human.new("X"), player_2 = Computer.new("O"), board = Board.new)
+    when 0
+      game = Game.new(player_1 = Computer.new("X"), player_2 = Computer.new("O"), board = Board.new)
+    end
+    game
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

@@ -4,7 +4,6 @@ class Board
 
   def initialize
     # resets the cells of the board to a 9 element array of ' '
-    @cells = []
     reset!
   end
 

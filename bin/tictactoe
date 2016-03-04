@@ -1,3 +1,14 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+puts
+puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+puts "  ● WELCOME TO TIC TAC TOE ●"
+puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+
+game = Game.new.game_type
+
+until game.over?
+  game.play
+end
