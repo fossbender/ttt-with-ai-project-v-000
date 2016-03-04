@@ -103,23 +103,19 @@ class Game
     end
   end
 
-  # Greet the user with a message
-  def greeting
-    puts
-    puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-    puts "  ● WELCOME TO TIC TAC TOE ●"
-    puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-    puts
-  end
+
+  ###############################################################
+  #                     CLI OPTIONS
+  ###############################################################
 
   # Gives the player the option of selecting a game type
   def game_type
     puts
     puts "❉ Game Types ❉"
     puts "--------------------------------------------"
-    puts "● 1 One Player Game"
-    puts "● 2 Two Players Game"
-    puts "● 0 The computer will play against itself"
+    puts ">> 1 << One Player Game"
+    puts ">> 2 << Two Players Game"
+    puts ">> 0 << The computer will play against itself"
     puts "--------------------------------------------"
     puts
     puts "Please select a Game type"
