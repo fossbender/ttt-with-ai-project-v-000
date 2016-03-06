@@ -139,6 +139,7 @@ class Game
     when "2"
       game = Game.new(player_1 = Human.new("X"), player_2 = Human.new("O"), board = Board.new)
     when "1"
+      # ask who plays first and verify user input
       first_player = "h"
       puts "Who shoulg go first?"
       puts "Enter c for computer or h for human"
