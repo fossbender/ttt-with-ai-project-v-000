@@ -108,8 +108,12 @@ class Game
   #                     CLI OPTIONS
   ###############################################################
 
-  # Gives the player the option of selecting a game type
-  def game_type
+  # Greet the user with a message
+  def greeting
+    puts
+    puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+    puts "  ● WELCOME TO TIC TAC TOE ●"
+    puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
     puts
     puts "❉ Game Types ❉"
     puts "--------------------------------------------"
@@ -117,27 +121,68 @@ class Game
     puts ">> 2 << Two Players Game"
     puts ">> 0 << The computer will play against itself"
     puts "--------------------------------------------"
+  end
+
+  # Prompts the user for what kind of game they want to play, 0,1, or 2 player
+  def game_type
+    greeting
     puts
     puts "Please select a Game type"
     type = gets.strip
 
-    until [0,1,2].include? type.to_i
+    until type.match(/[0|1|2]/)
       puts "Please select a valid Game type"
       type = gets.strip
     end
 
-    case type.to_i
-    when 2
+    case type
+    when "2"
       game = Game.new(player_1 = Human.new("X"), player_2 = Human.new("O"), board = Board.new)
-    when 1
-      game = Game.new(player_1 = Human.new("X"), player_2 = Computer.new("O"), board = Board.new)
-    when 0
+    when "1"
+      first_player = "h"
+      puts "Who shoulg go first?"
+      puts "Enter c for computer or h for human"
+      first_player = gets.strip.downcase
+
+      until first_player.match(/[c|h]/)
+        puts "Please select a valid player (c for computer or h for human)"
+        first_player = gets.strip.downcase
+      end
+
+      if first_player == "c"
+        player1 = Computer.new("O")
+        player2 = Human.new("X")
+      elsif first_player == "h"
+        player1 = Human.new("X")
+        player2 = Computer.new("O")
+      end
+      game = Game.new(player_1 = player1, player_2 = player2, board = Board.new)
+    when "0"
       game = Game.new(player_1 = Computer.new("X"), player_2 = Computer.new("O"), board = Board.new)
     end
     game
   end
 
-  def repeat?
-    # TODO
+  # Starts the game 
+  def start
+    until over?
+      play
+    end
   end
+
+  # Returns an answer of "y" or "n" to repeating the game
+  def repeat?
+    puts
+    puts "Would you like to play again? (y/n)"
+    answer = gets.strip.downcase
+    puts
+    puts "★ Thanks for playing. Come back soon! ★" if answer == "n"
+    until answer.match(/[y|n]/)
+      puts "Please enter y or n"
+      answer = gets.strip.downcase
+      puts "★ Thanks for playing. Come back soon! ★" if answer == "n"
+    end
+    answer
+  end
+
 end

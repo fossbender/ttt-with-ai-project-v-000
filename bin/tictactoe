@@ -2,15 +2,9 @@
 
 require_relative '../config/environment'
 
-# Greet the user with a message
-puts
-puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-puts "  ● WELCOME TO TIC TAC TOE ●"
-puts "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-
-# Prompt the user for what kind of game they want to play, 0,1, or 2 player
-game = Game.new.game_type
-
-until game.over?
-  game.play
-end
+answer = "y"
+until answer == "n"
+  game = Game.new.game_type
+  game.start
+  answer = game.repeat?
+end 
