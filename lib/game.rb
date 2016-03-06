@@ -126,13 +126,12 @@ class Game
   # Prompts the user for what kind of game they want to play, 0,1, or 2 player
   def game_type
     greeting
-    puts
-    puts "Please select a Game type"
-    type = gets.strip
-
+    
+    type = ""
     until type.match(/[0|1|2]/)
-      puts "Please select a valid Game type"
+      puts "\nPlease select a Game type"
       type = gets.strip
+      puts "Please select a valid Game type"
     end
 
     case type
@@ -173,15 +172,14 @@ class Game
 
   # Returns an answer of "y" or "n" to repeating the game
   def repeat?
-    puts
-    puts "Would you like to play again? (y/n)"
-    answer = gets.strip.downcase
-    puts
-    puts "★ Thanks for playing. Come back soon! ★" if answer == "n"
+    answer = ""
+    
     until answer.match(/[y|n]/)
+      puts "\nWould you like to play again? (y/n)"
       puts "Please enter y or n"
       answer = gets.strip.downcase
-      puts "★ Thanks for playing. Come back soon! ★" if answer == "n"
+      puts "\n★ Thanks for playing. Come back soon! ★" if answer == "n"
+      puts "\n"
     end
     answer
   end
